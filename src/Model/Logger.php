@@ -117,13 +117,13 @@ class Logger extends \Monolog\Logger
      * @param  array   $context The log context
      * @return Boolean Whether the record has been processed
      */
-    public function warning($message, array $context = [])
+    public function warning($message, array $context = []) : void
     {
         if (!$this->scopeConfig->getValue('shqlogmenu/shqlogger/active')) {
-            return false;
+            return;
         }
 
-        return $this->logMessage($message, $context, self::SEVERITY_MAJOR);
+        $this->logMessage($message, $context, self::SEVERITY_MAJOR);
     }
 
     /**
